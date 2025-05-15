@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-matcha-neutral: #7A7A7A;
+  --color-matcha-base-100: #FBF9F8;
+  --color-matcha-primary: #D2D7C6;
+  --color-matcha-secondary: #4F5E50;
+
+  --font-playfair: "Playfair Display", serif;
+  --font-quicksand: "Quicksand", sans-serif;
+  --text-sm: 0.75rem;
+  --text-base: 1rem;
+  --text-xl: 1.333rem;
+  --text-2xl: 1.777rem;
+  --text-3xl: 2.369rem;
+  --text-4xl: 3.158rem;
+  --text-5xl: 4.210rem;
+}
