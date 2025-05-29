@@ -1,9 +1,12 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Navbar } from "@/components/Nav";
 
 export default function Home() {
   return (
     <div>
-      <h1 className="text-matcha-secondary">Hello World</h1>
+      <Navbar />
+      <h1 className="text-foreground font-playfair">Hello World</h1>
+      <Button>Hello World</Button>
     </div>
   );
 }

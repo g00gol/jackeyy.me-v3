@@ -22,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${quicksand.variable}`}>
+    <html
+      lang="en"
+      className={`bg-background ${playfair.variable} ${quicksand.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
