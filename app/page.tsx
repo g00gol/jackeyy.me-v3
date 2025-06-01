@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Nav";
+import { Projects } from "@/components/Projects";
+import { Hero } from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex h-screen flex-col">
       <Navbar />
-      <h1 className="text-foreground font-playfair">Hello World</h1>
-      <Button>Hello World</Button>
+      <Hero />
+      <Projects />
     </div>
   );
 }
