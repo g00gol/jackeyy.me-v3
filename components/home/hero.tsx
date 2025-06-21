@@ -58,7 +58,7 @@ export function Hero() {
         <Column span={1}>
           <ColumnHeading>Recent Posts</ColumnHeading>
           <ColumnBody className="flex flex-col">
-            <BlogList />
+            <BlogList show={4} />
           </ColumnBody>
         </Column>
       </Grid>
