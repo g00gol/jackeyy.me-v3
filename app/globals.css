@@ -166,4 +166,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  a {
+    @apply hover:text-secondary text-base transition-colors;
+  }
 }

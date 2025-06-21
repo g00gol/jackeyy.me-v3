@@ -53,5 +53,5 @@ type ColumnBodyProps = { children: React.ReactNode; className?: string };
  * @param className - [Optional]
  */
 export function ColumnBody({ children, className = "" }: ColumnBodyProps) {
-  return <div className={`${cn(className)}`}>{children}</div>;
+  return <div className={`space-y-2 ${cn(className)}`}>{children}</div>;
 }

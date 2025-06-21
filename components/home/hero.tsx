@@ -7,6 +7,7 @@ import {
   Grid,
   GridContainer,
 } from "@/components/shared";
+import { BlogList } from "@/components/blog";
 
 const SOCIALS = [
   {
@@ -23,7 +24,7 @@ export function Hero() {
   return (
     <GridContainer>
       <Grid>
-        <Column span={1}>
+        <Column span={2}>
           <ColumnHeading>Hello World!</ColumnHeading>
           <ColumnBody>
             <h1>im jackey,</h1>
@@ -32,7 +33,9 @@ export function Hero() {
               <span className="text-secondary inline-flex items-center">
                 <MapPin className="h-4 w-4" /> NYC&nbsp;
               </span>
-              building waay too many things.
+              building waay too many things. i graduated from stevens institute
+              of technology with a degree in computer science. if you'd like to
+              work together, feel free to reach out!
             </h1>
 
             <p>listening on repeat: </p>
@@ -52,14 +55,10 @@ export function Hero() {
             </div>
           </ColumnBody>
         </Column>
-        <Column span={2}>
-          <ColumnHeading>Blog</ColumnHeading>
-          <ColumnBody>
-            <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            </ul>
+        <Column span={1}>
+          <ColumnHeading>Recent Posts</ColumnHeading>
+          <ColumnBody className="flex flex-col">
+            <BlogList />
           </ColumnBody>
         </Column>
       </Grid>

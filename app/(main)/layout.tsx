@@ -1,6 +1,6 @@
-import { Nav } from "@/components/layout/nav";
+import { Nav } from "@/components/shared";
 
-export default function MainLayout({
+export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

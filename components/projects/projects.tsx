@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 
 import { edhtop16, shima } from "@/assets/projects";
-import { projectsData } from "@/data/projects";
+import { projectsData } from "@/content/projects";
 import type { Project } from "@/assets/projects";
 import { Column, ColumnBody, ColumnHeading } from "@/components/shared/column";
 import { Grid, GridContainer } from "@/components/shared/grid";
