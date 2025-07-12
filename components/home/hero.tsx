@@ -38,8 +38,6 @@ export function Hero() {
               work together, feel free to reach out!
             </h1>
 
-            <p>listening on repeat: </p>
-
             <div className="space-x-2 underline">
               {SOCIALS.map((social) => (
                 <a

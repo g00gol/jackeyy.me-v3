@@ -1,0 +1,365 @@
+---
+title: "Building a Modern Portfolio with Next.js and TypeScript"
+description: "A deep dive into creating a fast, accessible, and beautiful portfolio website using modern web technologies. Learn about the architecture decisions, performance optimizations, and development workflow."
+date: "2025-01-15"
+author: "Your Name"
+tags: ["web development", "nextjs", "typescript", "portfolio", "react"]
+published: true
+---
+
+# Building a Modern Portfolio with Next.js and TypeScript
+
+Creating a personal portfolio in 2025 means embracing modern web technologies that prioritize performance, accessibility, and developer experience. In this post, I'll walk you through the process of building a portfolio website using **Next.js 14**, **TypeScript**, and **Tailwind CSS**.
+
+## Why This Tech Stack?
+
+When choosing technologies for my portfolio, I prioritized:
+
+- **Performance**: Fast loading times and smooth interactions
+- **SEO**: Server-side rendering for better search visibility
+- **Developer Experience**: TypeScript for better code quality
+- **Maintainability**: Modern tooling and best practices
+
+### Next.js 14: The React Framework for Production
+
+Next.js continues to lead the React ecosystem with features that make building web applications a joy:
+
+```typescript
+// App Router with TypeScript support
+export default async function ProjectPage({
+  params
+}: {
+  params: { slug: string }
+}) {
+  const { slug } = await params;
+  const project = await getProject(slug);
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      <h1>{project.title}</h1>
+      <MDXRemote source={project.content} />
+    </div>
+  );
+}
+```
+
+**Key Benefits:**
+
+- **App Router**: File-system based routing with layouts
+- **Server Components**: Automatic optimization for server rendering
+- **Built-in Optimization**: Image optimization, font loading, and more
+- **TypeScript Support**: First-class TypeScript integration
+
+## Project Architecture
+
+### Folder Structure
+
+I organized the project using Next.js 14's App Router convention:
+
+```
+app/
+├── (main)/           # Route group for main site
+│   ├── layout.tsx    # Shared layout
+│   ├── page.tsx      # Homepage
+│   ├── blog/         # Blog section
+│   └── project/      # Project pages
+components/
+├── blog/             # Blog-specific components
+├── projects/         # Project components
+├── shared/           # Reusable UI components
+└── ui/               # Base UI components
+content/
+├── blog/             # MDX blog posts
+└── projects/         # Project case studies
+```
+
+### Component Design Philosophy
+
+I followed a component-driven approach with clear separation of concerns:
+
+```typescript
+// Reusable Grid System
+interface GridProps {
+  children: React.ReactNode;
+  columns?: 1 | 2 | 3;
+}
+
+export function Grid({ children, columns = 3 }: GridProps) {
+  return (
+    <div className={`grid gap-8 grid-cols-1 md:grid-cols-${columns}`}>
+      {children}
+    </div>
+  );
+}
+
+// Usage in pages
+<Grid columns={2}>
+  <ProjectCard project={project1} />
+  <ProjectCard project={project2} />
+</Grid>
+```
+
+## Content Management with MDX
+
+One of the most important decisions was how to handle content. I chose **MDX** for its flexibility:
+
+### Why MDX?
+
+- **Markdown simplicity** with React component power
+- **Type-safe frontmatter** with TypeScript
+- **Custom components** for rich content
+- **Version control** friendly
+
+### Blog Post Structure
+
+Each blog post follows a consistent frontmatter schema:
+
+```yaml
+---
+title: "Post Title"
+description: "SEO-friendly description"
+date: "2025-01-15"
+author: "Author Name"
+tags: ["tag1", "tag2"]
+published: true
+---
+```
+
+### Custom MDX Components
+
+I created custom components to enhance the reading experience:
+
+```typescript
+const MDXComponents = {
+  h1: ({ children }) => (
+    <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+      {children}
+    </h1>
+  ),
+
+  code: ({ children }) => (
+    <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm">
+      {children}
+    </code>
+  ),
+
+  pre: ({ children }) => (
+    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+      {children}
+    </pre>
+  ),
+};
+```
+
+## Performance Optimizations
+
+### Image Optimization
+
+Next.js Image component provides automatic optimization:
+
+```typescript
+<Image
+  src="/projects/portfolio.png"
+  alt="Portfolio screenshot"
+  width={800}
+  height={600}
+  className="rounded-lg shadow-lg"
+  priority // For above-the-fold images
+/>
+```
+
+### Static Generation
+
+Using `generateStaticParams` for build-time optimization:
+
+```typescript
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+```
+
+### Bundle Analysis
+
+Regular bundle analysis helps identify optimization opportunities:
+
+```bash
+# Analyze bundle size
+npm run build
+npm run analyze
+```
+
+## Accessibility First
+
+Accessibility was a core consideration throughout development:
+
+### Semantic HTML
+
+```typescript
+<article className="max-w-4xl mx-auto">
+  <header>
+    <h1>{post.title}</h1>
+    <time dateTime={post.date}>{formattedDate}</time>
+  </header>
+
+  <main>
+    <MDXRemote source={post.content} />
+  </main>
+</article>
+```
+
+### Keyboard Navigation
+
+```typescript
+const ProjectCard = ({ project, index }) => {
+  return (
+    <Link
+      href={`/project/${project.slug}`}
+      className="group focus:outline-none focus:ring-2 focus:ring-blue-500"
+      tabIndex={0}
+    >
+      <div className="group-hover:scale-105 transition-transform">
+        {/* Card content */}
+      </div>
+    </Link>
+  );
+};
+```
+
+### Color Contrast
+
+Using Tailwind's contrast-safe color palette:
+
+```css
+/* High contrast text combinations */
+.text-primary {
+  @apply text-gray-900 dark:text-white;
+}
+.text-secondary {
+  @apply text-gray-600 dark:text-gray-300;
+}
+.bg-surface {
+  @apply bg-white dark:bg-gray-900;
+}
+```
+
+## Development Workflow
+
+### TypeScript Configuration
+
+Strict TypeScript configuration for better code quality:
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  }
+}
+```
+
+### Linting and Formatting
+
+Consistent code style with ESLint and Prettier:
+
+```json
+{
+  "scripts": {
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write ."
+  }
+}
+```
+
+### Git Hooks
+
+Pre-commit hooks ensure code quality:
+
+```json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": ["eslint --fix", "prettier --write"]
+  }
+}
+```
+
+## Deployment and Monitoring
+
+### Vercel Deployment
+
+Seamless deployment with Vercel:
+
+```bash
+# Automatic deployments on git push
+git push origin main
+```
+
+### Performance Monitoring
+
+Using Vercel Analytics and Web Vitals:
+
+```typescript
+// pages/_app.tsx
+import { Analytics } from '@vercel/analytics/react';
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  );
+}
+```
+
+## Key Takeaways
+
+### What Worked Well
+
+1. **App Router**: Simplified routing and layouts
+2. **TypeScript**: Caught errors early and improved code quality
+3. **MDX**: Flexible content management
+4. **Tailwind CSS**: Rapid UI development
+5. **Component Architecture**: Reusable and maintainable code
+
+### Challenges Faced
+
+1. **Learning Curve**: App Router differences from Pages Router
+2. **Bundle Size**: Managing dependencies and imports
+3. **MDX Setup**: Configuring custom components properly
+4. **Performance**: Optimizing for Core Web Vitals
+
+### Future Improvements
+
+- **Search Functionality**: Full-text search across blog posts
+- **Comments System**: Interactive comment system for blog posts
+- **Analytics Dashboard**: Custom analytics for content performance
+- **Newsletter Integration**: Email subscription for blog updates
+
+## Conclusion
+
+Building a modern portfolio requires balancing performance, accessibility, and developer experience. The combination of Next.js 14, TypeScript, and Tailwind CSS provides a solid foundation for creating fast, maintainable websites.
+
+The key is to start simple and iterate based on real usage and feedback. Focus on core functionality first, then add enhancements that truly improve the user experience.
+
+---
+
+**Resources and Links:**
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [MDX Documentation](https://mdxjs.com/)
+- [Web.dev Performance Guide](https://web.dev/performance/)
+
+_Have questions about the implementation? Feel free to reach out!_

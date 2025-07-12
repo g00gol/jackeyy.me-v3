@@ -3,6 +3,6 @@ export {
   getPostBySlug,
   getAllTags,
   getPostsByTag,
-} from "./blogUtils";
+} from "./utils";
 
 export { BlogList } from "./blogList";

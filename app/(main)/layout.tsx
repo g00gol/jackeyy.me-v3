@@ -1,4 +1,4 @@
-import { Nav } from "@/components/shared";
+import { Nav, Footer } from "@/components/shared";
 
 export default function HomeLayout({
   children,
@@ -6,9 +6,10 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="mx-auto min-h-screen max-w-7xl space-y-8 px-4">
+    <main className="mx-auto min-h-screen max-w-7xl px-4">
       <Nav />
-      {children}
+      <section className="bg-background z-10 border-b py-8">{children}</section>
+      <Footer />
     </main>
   );
 }

@@ -1,16 +1,10 @@
 export type Post = {
   slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  tags: string[];
-  published: boolean;
-  readingTime: string;
   content: string;
-};
+  readingTime: string;
+} & PostFrontmatter;
 
-export type BlogFrontmatter = {
+export type PostFrontmatter = {
   title: string;
   description: string;
   date: string;
