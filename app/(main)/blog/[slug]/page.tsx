@@ -13,7 +13,7 @@ import {
 } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 
-export default async function BlogPost({
+export default async function PostPage({
   params,
 }: {
   params: { slug: string };
