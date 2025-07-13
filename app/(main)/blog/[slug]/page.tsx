@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const postResult = getPostBySlug(slug);
@@ -32,7 +32,7 @@ export default async function PostPage({
       <GridContainer>
         <Grid>
           <Column span={1}>
-            <div className="@md:sticky top-24 space-y-4">
+            <div className="top-24 space-y-4 @md:sticky">
               <PostInfo post={post} />
             </div>
           </Column>

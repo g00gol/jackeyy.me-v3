@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const mdxComponents: MDXComponents = {
   // custom layout components
-  
+
   // Custom headings
   h1: ({ children }) => (
     <h1 className="mt-8 mb-4 text-3xl font-bold first:mt-0">{children}</h1>
