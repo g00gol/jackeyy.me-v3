@@ -77,7 +77,7 @@ export function getPostBySlug(slug: string): Post | Error {
 export function getPostsByTag(tag: string): Post[] {
   const allPosts = getAllPosts();
   return allPosts.filter((post) =>
-    post.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase()),
+    post.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase())
   );
 }
 
