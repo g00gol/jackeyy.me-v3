@@ -6,7 +6,7 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="mx-auto flex min-h-screen max-w-7xl flex-col px-4">
+    <main className="mx-auto flex min-h-screen max-w-[90rem] flex-col px-4">
       <Nav />
       <section className="bg-background z-10 flex-1 space-y-8 border-b py-8 transition-colors">
         {children}

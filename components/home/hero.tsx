@@ -45,7 +45,7 @@ export function Hero() {
                   size="sm"
                   key={social.name}
                 >
-                  <Outlink>{social.name}</Outlink>
+                  <Outlink href={social.href}>{social.name}</Outlink>
                 </Button>
               ))}
             </div>

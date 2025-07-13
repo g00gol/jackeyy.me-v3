@@ -73,7 +73,9 @@ function ProjectInfo({ project }: { project: ProjectType }) {
       <ColumnBody className="flex !space-y-0 space-x-2">
         {Object.entries(project.urls).map(([title, url]) => (
           <Button variant="outline" size="sm" key={title}>
-            <Outlink key={title}>{title}</Outlink>
+            <Outlink key={title} href={url}>
+              {title}
+            </Outlink>
           </Button>
         ))}
       </ColumnBody>
