@@ -1,11 +1,10 @@
-import { MapPin, SquareArrowOutUpRight } from "lucide-react";
-
 import {
   Column,
   ColumnHeading,
   ColumnBody,
   Grid,
   GridContainer,
+  Outlink,
 } from "@/components/shared";
 import { BlogList } from "@/components/blog";
 import { Button } from "../ui/button";
@@ -29,14 +28,12 @@ export function Hero() {
           <ColumnHeading>Hello World!</ColumnHeading>
           <ColumnBody>
             <h1>I'm Jackey,</h1>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             <h1 className="">
-              a software developer in&nbsp;
-              <span className="text-secondary inline-flex items-center">
-                <MapPin className="h-4 w-4" /> NYC&nbsp;
-              </span>
-              building way too many things. I graduated from Stevens Institute
-              of Technology with a degree in Computer Science. If you'd like to
-              work together, feel free to reach out!
+              a software developer in NYC building way too many things. I
+              graduated from Stevens Institute of Technology with a degree in
+              Computer Science. If you'd like to work together, feel free to
+              reach out!
             </h1>
 
             <div className="space-x-2 underline">
@@ -47,14 +44,7 @@ export function Hero() {
                   size="sm"
                   key={social.name}
                 >
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-all"
-                  >
-                    {social.name} <SquareArrowOutUpRight className="inline" />
-                  </a>
+                  <Outlink href={social.href}>{social.name}</Outlink>
                 </Button>
               ))}
             </div>
