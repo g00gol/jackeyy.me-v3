@@ -32,7 +32,7 @@ export default async function PostPage({
       <GridContainer>
         <Grid>
           <Column span={1}>
-            <div className="sticky top-24 space-y-4">
+            <div className="@md:sticky top-24 space-y-4">
               <PostInfo post={post} />
             </div>
           </Column>

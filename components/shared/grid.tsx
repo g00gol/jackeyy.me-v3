@@ -27,7 +27,9 @@ type GridProps = {
  */
 export function Grid({ children, className = "" }: GridProps) {
   return (
-    <div className={`grid grid-cols-1 gap-4 @md:grid-cols-3 ${cn(className)}`}>
+    <div
+      className={`grid grid-cols-1 gap-8 @md:grid-cols-3 @md:gap-4 ${cn(className)}`}
+    >
       {children}
     </div>
   );

@@ -31,7 +31,7 @@ export function Project({ project }: ProjectProps) {
       <GridContainer>
         <Grid>
           <Column span={1}>
-            <div className="sticky top-24 space-y-4">
+            <div className="top-24 space-y-4 @md:sticky">
               {project.content !== "" && (
                 <>
                   <ColumnHeading>{project.title}</ColumnHeading>

@@ -17,9 +17,7 @@ export function Projects() {
             {projects
               .filter((_, index) => index % 3 === columnIndex)
               .map((project) => (
-                <Link href={`/project/${project.slug}`} key={project.slug}>
-                  <Project project={project} />
-                </Link>
+                <ProjectCard key={project.slug} project={project} />
               ))}
           </Column>
         ))}
@@ -28,21 +26,23 @@ export function Projects() {
   );
 }
 
-function Project({ project }: { project: Project }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="relative space-y-1">
-      <div className="relative w-full overflow-hidden">
-        <Image
-          src={project.thumbnail}
-          alt={project.title}
-          width={0}
-          height={0}
-          sizes="100vw"
-          className="h-auto w-full"
-        />
-      </div>
-      <ColumnHeading>{project.title}</ColumnHeading>
-      <ColumnBody className="truncate">{project.description}</ColumnBody>
+    <div className="group relative space-y-1 transition-colors">
+      <Link href={`/project/${project.slug}`}>
+        <div className="relative w-full overflow-hidden">
+          <Image
+            src={project.thumbnail}
+            alt={project.title}
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full transition-all ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:blur-[1px]"
+          />
+        </div>
+        <ColumnHeading>{project.title}</ColumnHeading>
+        <ColumnBody className="truncate">{project.description}</ColumnBody>
+      </Link>
     </div>
   );
 }
