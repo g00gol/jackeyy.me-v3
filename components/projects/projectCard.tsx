@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import type { Project } from "./types";
-import { ColumnBody, ColumnHeading } from "@/components/shared/column";
+import { Column } from "@/components/shared";
 import { Badge } from "@/components/ui/badge";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -27,14 +27,14 @@ export function ProjectCard({ project }: { project: Project }) {
             className="h-auto w-full duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:blur-[1px]"
           />
         </div>
-        <ColumnHeading>{project.title}</ColumnHeading>
+        <Column.Heading>{project.title}</Column.Heading>
         <div className="relative">
-          <ColumnBody className="inset-0 truncate duration-300 @md:absolute @md:opacity-0 @md:group-hover:opacity-100">
+          <Column.Body className="inset-0 truncate duration-300 @md:absolute @md:opacity-0 @md:group-hover:opacity-100">
             {project.description}
-          </ColumnBody>
-          <ColumnBody className="hidden truncate duration-300 @md:block @md:group-hover:opacity-0">
+          </Column.Body>
+          <Column.Body className="hidden truncate duration-300 @md:block @md:group-hover:opacity-0">
             {project.duration}
-          </ColumnBody>
+          </Column.Body>
         </div>
       </Link>
     </div>

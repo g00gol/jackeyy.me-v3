@@ -35,7 +35,7 @@ type ColumnHeadingProps = {
  * A heading component for columns, typically used for titles or labels.
  * @param className - [Optional]
  */
-export function ColumnHeading({
+Column.Heading = function ColumnHeading({
   children,
   className = "",
 }: ColumnHeadingProps) {
@@ -44,7 +44,7 @@ export function ColumnHeading({
       {children}
     </h2>
   );
-}
+};
 
 type ColumnBodyProps = { children: React.ReactNode; className?: string };
 
@@ -52,6 +52,9 @@ type ColumnBodyProps = { children: React.ReactNode; className?: string };
  * A body component for columns, typically used for content.
  * @param className - [Optional]
  */
-export function ColumnBody({ children, className = "" }: ColumnBodyProps) {
+Column.Body = function ColumnBody({
+  children,
+  className = "",
+}: ColumnBodyProps) {
   return <div className={`space-y-2 ${cn(className)}`}>{children}</div>;
-}
+};

@@ -1,11 +1,4 @@
-import {
-  Column,
-  ColumnHeading,
-  ColumnBody,
-  Grid,
-  GridContainer,
-  Outlink,
-} from "@/components/shared";
+import { Column, Grid, GridContainer, Outlink } from "@/components/shared";
 import { BlogList } from "@/components/blog";
 import { Button } from "@/components/ui/button";
 
@@ -25,8 +18,8 @@ export function Hero() {
     <GridContainer>
       <Grid>
         <Column span={2}>
-          <ColumnHeading>Hello World!</ColumnHeading>
-          <ColumnBody>
+          <Column.Heading>Hello World!</Column.Heading>
+          <Column.Body>
             <h1>I'm Jackey,</h1>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <h1 className="">
@@ -48,13 +41,13 @@ export function Hero() {
                 </Button>
               ))}
             </div>
-          </ColumnBody>
+          </Column.Body>
         </Column>
         <Column span={1}>
-          <ColumnHeading>Recent Posts</ColumnHeading>
-          <ColumnBody className="flex flex-col">
+          <Column.Heading>Recent Posts</Column.Heading>
+          <Column.Body className="flex flex-col">
             <BlogList show={4} />
-          </ColumnBody>
+          </Column.Body>
         </Column>
       </Grid>
     </GridContainer>

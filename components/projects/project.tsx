@@ -1,17 +1,9 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 
 import type { Project as ProjectType } from "./types";
-import { MDXComponents } from "@/components/mdx/mdxComponents";
-import {
-  Grid,
-  GridContainer,
-  Column,
-  ColumnBody,
-  ColumnHeading,
-  Outlink,
-} from "@/components/shared";
+import { Grid, GridContainer, Column, Outlink } from "@/components/shared";
 import { Button } from "@/components/ui/button";
+import { MDX } from "@/components/mdx";
 
 interface ProjectProps {
   project: ProjectType;
@@ -34,8 +26,8 @@ export function Project({ project }: ProjectProps) {
             <div className="top-24 space-y-4 @md:sticky">
               {project.content !== "" && (
                 <>
-                  <ColumnHeading>{project.title}</ColumnHeading>
-                  <ColumnBody>{project.description}</ColumnBody>
+                  <Column.Heading>{project.title}</Column.Heading>
+                  <Column.Body>{project.description}</Column.Body>
                 </>
               )}
               <ProjectInfo project={project} />
@@ -44,15 +36,12 @@ export function Project({ project }: ProjectProps) {
           <Column span={2}>
             {project.content !== "" ? (
               <div className="prose prose-lg dark:prose-invert max-w-none">
-                <MDXRemote
-                  source={project.content}
-                  components={MDXComponents}
-                />
+                <MDX source={project.content} />
               </div>
             ) : (
               <>
-                <ColumnHeading>{project.title}</ColumnHeading>
-                <ColumnBody>{project.description}</ColumnBody>
+                <Column.Heading>{project.title}</Column.Heading>
+                <Column.Body>{project.description}</Column.Body>
               </>
             )}
           </Column>
@@ -65,12 +54,12 @@ export function Project({ project }: ProjectProps) {
 function ProjectInfo({ project }: { project: ProjectType }) {
   return (
     <>
-      <ColumnHeading>Tech</ColumnHeading>
-      <ColumnBody>{project.tech.join(", ")}</ColumnBody>
-      <ColumnHeading>Duration</ColumnHeading>
-      <ColumnBody>{project.duration}</ColumnBody>
-      <ColumnHeading>URLs</ColumnHeading>
-      <ColumnBody className="flex !space-y-0 space-x-2">
+      <Column.Heading>Tech</Column.Heading>
+      <Column.Body>{project.tech.join(", ")}</Column.Body>
+      <Column.Heading>Duration</Column.Heading>
+      <Column.Body>{project.duration}</Column.Body>
+      <Column.Heading>URLs</Column.Heading>
+      <Column.Body className="flex !space-y-0 space-x-2">
         {Object.entries(project.urls).map(([title, url]) => (
           <Button variant="outline" size="sm" key={title}>
             <Outlink key={title} href={url}>
@@ -78,7 +67,7 @@ function ProjectInfo({ project }: { project: ProjectType }) {
             </Outlink>
           </Button>
         ))}
-      </ColumnBody>
+      </Column.Body>
     </>
   );
 }
