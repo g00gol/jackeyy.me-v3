@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 
 import type { Post } from "@/components/blog/types";
 import { getPostBySlug } from "@/components/blog/utils";
-import { MDXComponents } from "@/components/mdx/mdxComponents";
 import { Grid, GridContainer, Column } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { MDX } from "@/components/mdx";

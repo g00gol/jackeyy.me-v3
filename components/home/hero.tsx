@@ -21,7 +21,6 @@ export function Hero() {
           <Column.Heading>Hello World!</Column.Heading>
           <Column.Body>
             <h1>I'm Jackey,</h1>
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
             <h1 className="">
               a software developer in NYC building way too many things. I
               graduated from Stevens Institute of Technology with a degree in
