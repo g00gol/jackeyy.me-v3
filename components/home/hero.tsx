@@ -7,7 +7,7 @@ import {
   Outlink,
 } from "@/components/shared";
 import { BlogList } from "@/components/blog";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 const SOCIALS = [
   {

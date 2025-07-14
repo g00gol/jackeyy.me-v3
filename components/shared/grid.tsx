@@ -13,7 +13,9 @@ export function GridContainer({
   children,
   className = "",
 }: GridContainerProps) {
-  return <div className={`@container ${cn(className)}`}>{children}</div>;
+  return (
+    <div className={`@container space-y-8 ${cn(className)}`}>{children}</div>
+  );
 }
 
 type GridProps = {

@@ -34,7 +34,13 @@ export function getAllProjects(): Project[] {
     })
     .filter((project) => project.published);
 
-  // TODO: add sorting
+  projects.sort((a, b) => {
+    const [fromA, toA] = a.duration.split("-");
+    const [fromB, toB] = b.duration.split("-");
+    const dateA = toA ? new Date(toA) : new Date(fromA);
+    const dateB = toB ? new Date(toB) : new Date(fromB);
+    return dateB.getTime() - dateA.getTime();
+  });
 
   return projects;
 }

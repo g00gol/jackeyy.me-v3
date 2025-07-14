@@ -1,5 +1,6 @@
 export type ProjectFrontmatter = {
   title: string;
+  tagline: string;
   description: string;
   duration: string;
   tech: string[];
