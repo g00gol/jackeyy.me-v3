@@ -1,10 +1,17 @@
 import { notFound } from "next/navigation";
 
 import type { Post } from "@/components/blog/types";
-import { getPostBySlug } from "@/components/blog/utils";
+import { getAllPosts, getPostBySlug } from "@/components/blog/utils";
 import { Grid, Column } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { MDX } from "@/components/mdx";
+
+export function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export default async function PostPage({
   params,
@@ -12,13 +19,13 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const postResult = getPostBySlug(slug);
 
-  if (postResult instanceof Error || !postResult) {
+  let post: Post;
+  try {
+    post = getPostBySlug(slug) as Post;
+  } catch {
     notFound();
   }
-
-  const post: Post = postResult;
 
   return (
     <Grid>

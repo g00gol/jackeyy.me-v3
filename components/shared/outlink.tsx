@@ -19,7 +19,7 @@ export function Outlink({
   children,
 }: OutlinkProps) {
   const outlinkVariants = cva(
-    "inline-flex items-center gap-1 transitions-colors",
+    "inline-flex items-center gap-1 transition-colors",
     {
       variants: {
         variant: {

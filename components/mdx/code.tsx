@@ -1,17 +1,13 @@
-import { ClipboardCopy } from "lucide-react";
-
 export const pre = ({
   children,
 }: {
-  children: React.ReactNode & { props?: Record<string, any> };
+  children: React.ReactNode & { props?: Record<string, unknown> };
 }) => {
   const child = children?.props;
-  const className = child?.className || "";
+  const className = (child?.className as string) || "";
   const match = className.match(/hljs language-([^(]+)(?:\(([^)]+)\))?/); // regex to capture language and optional title in parentheses
   const language = match?.[1]?.trim() || "text";
   const title = match?.[2]?.trim() || "";
-
-  console.log(children);
 
   const languageMap: Record<string, string> = {
     ts: "typescript",

@@ -39,7 +39,7 @@ function PowerUp({
   icon: Icon,
 }: {
   handleClick?: () => void;
-  icon: React.ComponentType<any>;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }) {
   return (
     <button

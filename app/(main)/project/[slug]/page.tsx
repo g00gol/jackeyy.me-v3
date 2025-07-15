@@ -1,8 +1,15 @@
 import { notFound } from "next/navigation";
 
 import type { Project as ProjectType } from "@/components/projects/types";
-import { getProjectBySlug } from "@/components/projects/utils";
+import { getAllProjects, getProjectBySlug } from "@/components/projects/utils";
 import { Project } from "@/components/projects/project";
+
+export function generateStaticParams() {
+  const projects: ProjectType[] = getAllProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
 
 export default async function ProjectPage({
   params,
@@ -10,9 +17,11 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project: ProjectType | null = getProjectBySlug(slug);
 
-  if (!project) {
+  let project: ProjectType;
+  try {
+    project = getProjectBySlug(slug) as ProjectType;
+  } catch {
     notFound();
   }
 

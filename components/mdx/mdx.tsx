@@ -1,5 +1,4 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import rehypeHighlight from "rehype-highlight";
 
 import { MDXComponents } from "@/components/mdx/mdxComponents";
 

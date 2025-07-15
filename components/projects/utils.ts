@@ -48,14 +48,14 @@ export function getAllProjects(): Project[] {
 /**
  * fetches a single project by slug
  * @param slug - the project slug
- * @returns {Project | null} the project if found, null otherwise
+ * @returns {Project | Error} the project if found, null otherwise
  */
-export function getProjectBySlug(slug: string): Project | null {
+export function getProjectBySlug(slug: string): Project | Error {
   try {
     const filePath = path.join(PROJECT_PATH, `${slug}.mdx`);
 
     if (!fs.existsSync(filePath)) {
-      return null;
+      throw new Error(`Project with slug "${slug}" not found.`);
     }
 
     const fileContent = fs.readFileSync(filePath, "utf8");
@@ -73,7 +73,6 @@ export function getProjectBySlug(slug: string): Project | null {
       content,
     };
   } catch (error) {
-    console.error(`Error loading project ${slug}:`, error);
-    return null;
+    throw new Error(`Error loading project ${slug}: ${error}`);
   }
 }
