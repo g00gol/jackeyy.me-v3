@@ -1,4 +1,4 @@
-import { Column, Grid, GridContainer, Outlink } from "@/components/shared";
+import { Column, Grid, Outlink } from "@/components/shared";
 import { BlogList } from "@/components/blog";
 import { Button } from "@/components/ui/button";
 
@@ -15,13 +15,13 @@ const SOCIALS = [
 
 export function Hero() {
   return (
-    <GridContainer>
-      <Grid>
+    <Grid>
+      <Grid.Content>
         <Column span={2}>
           <Column.Heading>Hello World!</Column.Heading>
           <Column.Body>
             <h1>I'm Jackey,</h1>
-            <h1 className="">
+            <h1>
               a software developer in NYC building way too many things. I
               graduated from Stevens Institute of Technology with a degree in
               Computer Science. If you'd like to work together, feel free to
@@ -36,7 +36,9 @@ export function Hero() {
                   size="sm"
                   key={social.name}
                 >
-                  <Outlink href={social.href}>{social.name}</Outlink>
+                  <Outlink variant="ghost" href={social.href}>
+                    {social.name}
+                  </Outlink>
                 </Button>
               ))}
             </div>
@@ -45,10 +47,10 @@ export function Hero() {
         <Column span={1}>
           <Column.Heading>Recent Posts</Column.Heading>
           <Column.Body className="flex flex-col">
-            <BlogList show={4} />
+            <BlogList show={3} />
           </Column.Body>
         </Column>
-      </Grid>
-    </GridContainer>
+      </Grid.Content>
+    </Grid>
   );
 }
