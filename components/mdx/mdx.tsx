@@ -8,9 +8,7 @@ type MDXProps = {
 };
 
 const OPTIONS = {
-  mdxOptions: {
-    rehypePlugins: [rehypeHighlight],
-  },
+  mdxOptions: {},
 };
 
 const mdx = ({ source }: MDXProps) => {

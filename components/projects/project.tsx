@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import type { Project as ProjectType } from "./types";
-import { Grid, GridContainer, Column, Outlink } from "@/components/shared";
+import { Grid, Column, Outlink } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { MDX } from "@/components/mdx";
 
@@ -20,8 +20,8 @@ export function Project({ project }: ProjectProps) {
           className="object-cover object-top"
         />
       </div>
-      <GridContainer>
-        <Grid>
+      <Grid>
+        <Grid.Content>
           <Column span={1}>
             <div className="top-24 space-y-4 @md:sticky">
               {project.content !== "" && (
@@ -45,8 +45,8 @@ export function Project({ project }: ProjectProps) {
               </>
             )}
           </Column>
-        </Grid>
-      </GridContainer>
+        </Grid.Content>
+      </Grid>
     </>
   );
 }
@@ -62,7 +62,7 @@ function ProjectInfo({ project }: { project: ProjectType }) {
       <Column.Body className="flex !space-y-0 space-x-2">
         {Object.entries(project.urls).map(([title, url]) => (
           <Button variant="outline" size="sm" key={title}>
-            <Outlink key={title} href={url}>
+            <Outlink variant="ghost" key={title} href={url}>
               {title}
             </Outlink>
           </Button>

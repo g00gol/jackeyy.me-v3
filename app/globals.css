@@ -171,3 +171,18 @@
     @apply text-base transition-colors;
   }
 }
+
+@layer utilities {
+  .pixelated {
+    image-rendering: pixelated;
+  }
+
+  @keyframes animateSprite {
+    0% {
+      background-position: 0px 0px;
+    }
+    100% {
+      background-position: calc(-1 * var(--sprite-width)) 0px;
+    }
+  }
+}

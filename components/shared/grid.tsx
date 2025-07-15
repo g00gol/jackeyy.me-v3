@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-type GridContainerProps = {
+type GridProps = {
   children: React.ReactNode;
   className?: string;
 };
@@ -9,16 +9,13 @@ type GridContainerProps = {
  * A container for grid layouts that allows responsive design.
  * @param className - [Optional]
  */
-export function GridContainer({
-  children,
-  className = "",
-}: GridContainerProps) {
+export function Grid({ children, className = "" }: GridProps) {
   return (
     <div className={`@container space-y-4 ${cn(className)}`}>{children}</div>
   );
 }
 
-type GridProps = {
+type GridContentProps = {
   children: React.ReactNode;
   className?: string;
 };
@@ -27,10 +24,13 @@ type GridProps = {
  * A responsive grid component that adapts to different screen sizes.
  * @param className - [Optional]
  */
-export function Grid({ children, className = "" }: GridProps) {
+Grid.Content = function GridContent({
+  children,
+  className = "",
+}: GridContentProps) {
   return (
     <div className={`grid grid-cols-1 gap-4 @md:grid-cols-3 ${cn(className)}`}>
       {children}
     </div>
   );
-}
+};

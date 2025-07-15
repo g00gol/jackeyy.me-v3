@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "./fonts.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/themeProvider";
+import { ContextProvider } from "@/contexts";
 
 export const metadata: Metadata = {
   title: "jackey yang",
@@ -19,14 +20,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <ContextProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </ContextProvider>
         <Analytics />
       </body>
     </html>
